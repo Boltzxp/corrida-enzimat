@@ -1,6 +1,7 @@
 // Variáveis globais
 const board = document.getElementById('board');
 const rollDiceButton = document.getElementById('roll-dice');
+const diceElement = document.getElementById('dice');
 const questionArea = document.getElementById('question-area');
 const questionText = document.getElementById('question-text');
 const answerButtons = [
@@ -10,7 +11,7 @@ const answerButtons = [
 ];
 
 let playerPosition = 0; // Posição inicial do jogador
-const totalCells = 30; // Número total de casas no tabuleiro
+const totalCells = 50; // Número total de casas no tabuleiro (aumentado)
 const questions = [
   {
     question: "Qual é o papel do ATP na célula?",
@@ -79,19 +80,30 @@ function checkAnswer(selectedAnswer, correctAnswer) {
 
 // Evento de lançar o dado
 rollDiceButton.addEventListener('click', () => {
-  const diceRoll = Math.floor(Math.random() * 6) + 1; // Gera um número entre 1 e 6
-  alert(`Você tirou ${diceRoll} no dado.`);
-  movePlayer(diceRoll);
+  // Inicia a animação de giro
+  diceElement.style.animation = 'spin 1s ease-in-out';
 
-  // Verifica se o jogador caiu em uma casa especial
-  if (playerPosition % 5 === 0 && playerPosition !== 0) {
-    showQuestion();
-  }
+  // Após 1 segundo, exibe o resultado do dado
+  setTimeout(() => {
+    const diceRoll = Math.floor(Math.random() * 6) + 1; // Gera um número entre 1 e 6
+    diceElement.textContent = diceRoll; // Atualiza o dado com o número sorteado
 
-  // Verifica se o jogador venceu
-  if (playerPosition === totalCells - 1) {
-    alert("Parabéns! Você venceu a Corrida Enzimática!");
-  }
+    alert(`Você tirou ${diceRoll} no dado.`);
+    movePlayer(diceRoll);
+
+    // Verifica se o jogador caiu em uma casa especial
+    if (playerPosition % 5 === 0 && playerPosition !== 0) {
+      showQuestion();
+    }
+
+    // Verifica se o jogador venceu
+    if (playerPosition === totalCells - 1) {
+      alert("Parabéns! Você venceu a Corrida Enzimática!");
+    }
+
+    // Para a animação após o resultado
+    diceElement.style.animation = 'none';
+  }, 1000); // 1 segundo de animação
 });
 
 // Inicializa o jogo

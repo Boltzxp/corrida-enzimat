@@ -14,8 +14,8 @@ body {
 
 #board {
   display: grid;
-  grid-template-columns: repeat(10, 50px);
-  grid-gap: 5px;
+  grid-template-columns: repeat(10, 40px); /* Reduz o tamanho das células */
+  grid-gap: 3px; /* Reduz o espaço entre as células */
   justify-content: center;
 }
 

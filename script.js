@@ -11,7 +11,7 @@ const answerButtons = [
 ];
 
 let playerPosition = 0; // Posição inicial do jogador
-const totalCells = 50; // Número total de casas no tabuleiro (aumentado)
+const totalCells = 100; // Número total de casas no tabuleiro (aumentado)
 const questions = [
   {
     question: "Qual é o papel do ATP na célula?",
@@ -80,13 +80,27 @@ function checkAnswer(selectedAnswer, correctAnswer) {
 
 // Evento de lançar o dado
 rollDiceButton.addEventListener('click', () => {
+  // Array com os caminhos das imagens dos dados
+  const diceImages = [
+    "images/dice-1.png",
+    "images/dice-2.png",
+    "images/dice-3.png",
+    "images/dice-4.png",
+    "images/dice-5.png",
+    "images/dice-6.png"
+  ];
+
   // Inicia a animação de giro
-  diceElement.style.animation = 'spin 1s ease-in-out';
+  let rotationInterval = setInterval(() => {
+    const randomImage = diceImages[Math.floor(Math.random() * diceImages.length)];
+    diceElement.src = randomImage;
+  }, 100); // Troca a imagem a cada 100ms
 
   // Após 1 segundo, exibe o resultado do dado
   setTimeout(() => {
+    clearInterval(rotationInterval); // Para a animação
     const diceRoll = Math.floor(Math.random() * 6) + 1; // Gera um número entre 1 e 6
-    diceElement.textContent = diceRoll; // Atualiza o dado com o número sorteado
+    diceElement.src = `images/dice-${diceRoll}.png`; // Mostra o dado correto
 
     alert(`Você tirou ${diceRoll} no dado.`);
     movePlayer(diceRoll);
@@ -100,9 +114,6 @@ rollDiceButton.addEventListener('click', () => {
     if (playerPosition === totalCells - 1) {
       alert("Parabéns! Você venceu a Corrida Enzimática!");
     }
-
-    // Para a animação após o resultado
-    diceElement.style.animation = 'none';
   }, 1000); // 1 segundo de animação
 });
 

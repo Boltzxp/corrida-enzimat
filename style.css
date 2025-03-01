@@ -27,7 +27,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px; /* Tamanho reduzido para caber mais casas */
+  font-size: 20px; /* Tamanho reduzido para caber mais casas */
 }
 
 .player {

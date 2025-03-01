@@ -77,7 +77,22 @@ function checkAnswer(selectedAnswer, correctAnswer) {
   }
   questionArea.style.display = 'none';
 }
-
+// Pré-carregar as imagens do dado
+const preloadImages = () => {
+  const diceImages = [
+    "images/images/dice-1.png",
+    "images/images/dice-2.png",
+    "images/images/dice-3.png",
+    "images/images/dice-4.png",
+    "images/images/dice-5.png",
+    "images/images/dice-6.png"
+  ];
+  diceImages.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+};
+preloadImages();
 // Evento de lançar o dado
 rollDiceButton.addEventListener('click', () => {
   // Array com os caminhos das imagens dos dados

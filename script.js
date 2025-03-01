@@ -95,7 +95,7 @@ rollDiceButton.addEventListener('click', () => {
   // Inicia a animação de giro
   let rotationInterval = setInterval(() => {
     const randomEmoji = diceEmojis[Math.floor(Math.random() * diceEmojis.length)];
-    diceElement.textContent = randomEmoji;
+    diceElement.textContent = randomEmoji; // Atualiza o emoji do dado
   }, 100); // Troca o emoji a cada 100ms
 
   // Após 1 segundo, exibe o resultado do dado

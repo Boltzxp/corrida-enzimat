@@ -11,7 +11,7 @@ const answerButtons = [
 ];
 
 let playerPosition = 0; // Posição inicial do jogador
-const totalCells = 100; // Número total de casas no tabuleiro (aumentado)
+const totalCells = 100; // Número total de casas no tabuleiro
 const questions = [
   {
     question: "Qual é o papel do ATP na célula?",
@@ -30,9 +30,18 @@ function createBoard() {
   for (let i = 0; i < totalCells; i++) {
     const cell = document.createElement('div');
     cell.classList.add('cell');
-    cell.textContent = i + 1;
-    if (i === 0) cell.classList.add('start');
-    if (i === totalCells - 1) cell.classList.add('end');
+
+    // Adiciona emojis especiais para algumas casas
+    if (i === 0) {
+      cell.textContent = "🏁"; // Casa inicial
+    } else if (i === totalCells - 1) {
+      cell.textContent = "🏆"; // Casa final
+    } else if (i % 5 === 0) {
+      cell.textContent = "🔍"; // Casa com pergunta
+    } else {
+      cell.textContent = "🟩"; // Casa normal
+    }
+
     board.appendChild(cell);
   }
 }
@@ -77,73 +86,23 @@ function checkAnswer(selectedAnswer, correctAnswer) {
   }
   questionArea.style.display = 'none';
 }
-// Pré-carregar as imagens do dado
-const preloadImages = () => {
-  const diceImages = [
-    "images/images/dice-1.png",
-    "images/images/dice-2.png",
-    "images/images/dice-3.png",
-    "images/images/dice-4.png",
-    "images/images/dice-5.png",
-    "images/images/dice-6.png"
-  ];
-  diceImages.forEach(src => {
-    const img = new Image();
-    img.src = src;
-  });
-};
-preloadImages();
+
 // Evento de lançar o dado
 rollDiceButton.addEventListener('click', () => {
-  // Array com os caminhos das imagens dos dados
+  // Array com os emojis das faces do dado
+  const diceEmojis = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
 
-const diceImages = [
-  "images/images/dice-1.png",
-  "images/images/dice-2.png",
-  "images/images/dice-3.png",
-  "images/images/dice-4.png",
-  "images/images/dice-5.png",
-  "images/images/dice-6.png"
-];
-  // Evento de lançar o dado
-rollDiceButton.addEventListener('click', () => {
   // Inicia a animação de giro
   let rotationInterval = setInterval(() => {
-    const randomImage = diceImages[Math.floor(Math.random() * diceImages.length)];
-    diceElement.src = randomImage;
-  }, 100); // Troca a imagem a cada 100ms
+    const randomEmoji = diceEmojis[Math.floor(Math.random() * diceEmojis.length)];
+    diceElement.textContent = randomEmoji;
+  }, 100); // Troca o emoji a cada 100ms
 
   // Após 1 segundo, exibe o resultado do dado
   setTimeout(() => {
     clearInterval(rotationInterval); // Para a animação
     const diceRoll = Math.floor(Math.random() * 6) + 1; // Gera um número entre 1 e 6
-    diceElement.src = `images/images/dice-${diceRoll}.png`; // Mostra o dado correto
-
-    alert(`Você tirou ${diceRoll} no dado.`);
-    movePlayer(diceRoll);
-
-    // Verifica se o jogador caiu em uma casa especial
-    if (playerPosition % 5 === 0 && playerPosition !== 0) {
-      showQuestion();
-    }
-
-    // Verifica se o jogador venceu
-    if (playerPosition === totalCells - 1) {
-      alert("Parabéns! Você venceu a Corrida Enzimática!");
-    }
-  }, 1000); // 1 segundo de animação
-});
-  // Inicia a animação de giro
-  let rotationInterval = setInterval(() => {
-    const randomImage = diceImages[Math.floor(Math.random() * diceImages.length)];
-    diceElement.src = randomImage;
-  }, 100); // Troca a imagem a cada 100ms
-
-  // Após 1 segundo, exibe o resultado do dado
-  setTimeout(() => {
-    clearInterval(rotationInterval); // Para a animação
-    const diceRoll = Math.floor(Math.random() * 6) + 1; // Gera um número entre 1 e 6
-    diceElement.src = `images/dice-${diceRoll}.png`; // Mostra o dado correto
+    diceElement.textContent = diceEmojis[diceRoll - 1]; // Mostra o emoji correto
 
     alert(`Você tirou ${diceRoll} no dado.`);
     movePlayer(diceRoll);

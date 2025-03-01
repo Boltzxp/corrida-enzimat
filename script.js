@@ -96,7 +96,7 @@ rollDiceButton.addEventListener('click', () => {
   let rotationInterval = setInterval(() => {
     const randomEmoji = diceEmojis[Math.floor(Math.random() * diceEmojis.length)];
     diceElement.textContent = randomEmoji; // Atualiza o emoji do dado
-  }, 100); // Troca o emoji a cada 100ms
+  }, 200); // Troca o emoji a cada 200ms (ajustado para ser mais lento)
 
   // Após 1 segundo, exibe o resultado do dado
   setTimeout(() => {
@@ -116,7 +116,7 @@ rollDiceButton.addEventListener('click', () => {
     if (playerPosition === totalCells - 1) {
       alert("Parabéns! Você venceu a Corrida Enzimática!");
     }
-  }, 1000); // 1 segundo de animação
+  }, 1500); // Aumentamos o tempo para 1.5 segundos para dar mais tempo à animação
 });
 
 // Inicializa o jogo

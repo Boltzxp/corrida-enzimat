@@ -82,6 +82,7 @@ function checkAnswer(selectedAnswer, correctAnswer) {
 rollDiceButton.addEventListener('click', () => {
   // Array com os caminhos das imagens dos dados
  // Array com os caminhos das imagens dos dados
+// Array com os caminhos das imagens dos dados
 const diceImages = [
   "images/images/dice-1.png",
   "images/images/dice-2.png",
@@ -89,7 +90,7 @@ const diceImages = [
   "images/images/dice-4.png",
   "images/images/dice-5.png",
   "images/images/dice-6.png"
-  ];
+];
 
   // Inicia a animação de giro
   let rotationInterval = setInterval(() => {

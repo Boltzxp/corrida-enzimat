@@ -96,9 +96,7 @@ preloadImages();
 // Evento de lançar o dado
 rollDiceButton.addEventListener('click', () => {
   // Array com os caminhos das imagens dos dados
- // Array com os caminhos das imagens dos dados
-// Array com os caminhos das imagens dos dados
-// Array com os caminhos das imagens dos dados
+
 const diceImages = [
   "images/images/dice-1.png",
   "images/images/dice-2.png",
@@ -107,6 +105,34 @@ const diceImages = [
   "images/images/dice-5.png",
   "images/images/dice-6.png"
 ];
+  // Evento de lançar o dado
+rollDiceButton.addEventListener('click', () => {
+  // Inicia a animação de giro
+  let rotationInterval = setInterval(() => {
+    const randomImage = diceImages[Math.floor(Math.random() * diceImages.length)];
+    diceElement.src = randomImage;
+  }, 100); // Troca a imagem a cada 100ms
+
+  // Após 1 segundo, exibe o resultado do dado
+  setTimeout(() => {
+    clearInterval(rotationInterval); // Para a animação
+    const diceRoll = Math.floor(Math.random() * 6) + 1; // Gera um número entre 1 e 6
+    diceElement.src = `images/images/dice-${diceRoll}.png`; // Mostra o dado correto
+
+    alert(`Você tirou ${diceRoll} no dado.`);
+    movePlayer(diceRoll);
+
+    // Verifica se o jogador caiu em uma casa especial
+    if (playerPosition % 5 === 0 && playerPosition !== 0) {
+      showQuestion();
+    }
+
+    // Verifica se o jogador venceu
+    if (playerPosition === totalCells - 1) {
+      alert("Parabéns! Você venceu a Corrida Enzimática!");
+    }
+  }, 1000); // 1 segundo de animação
+});
   // Inicia a animação de giro
   let rotationInterval = setInterval(() => {
     const randomImage = diceImages[Math.floor(Math.random() * diceImages.length)];

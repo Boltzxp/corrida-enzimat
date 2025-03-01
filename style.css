@@ -1,3 +1,4 @@
+/* Estilos Globais */
 body {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -6,12 +7,17 @@ body {
   padding: 0;
 }
 
+h1 {
+  color: #333;
+}
+
 #game-board {
   margin: 20px auto;
   width: 90%;
   max-width: 800px;
 }
 
+/* Tabuleiro */
 #board {
   display: grid;
   grid-template-columns: repeat(20, 35px); /* Ajustado para 100 casas */
@@ -27,7 +33,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px; /* Tamanho reduzido para caber mais casas */
+  font-size: 14px; /* Tamanho dos emojis */
 }
 
 .player {
@@ -37,13 +43,7 @@ body {
   border-radius: 50%;
 }
 
-button {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
+/* Dado */
 #dice-container {
   margin: 20px auto;
   width: 100px;
@@ -54,13 +54,35 @@ button {
   border: 2px solid #000;
   border-radius: 10px;
   background-color: #f0f0f0;
+  font-size: 50px; /* Tamanho do emoji */
 }
 
 #dice {
-  width: 80px; /* Tamanho da imagem do dado */
-  height: 80px;
+  text-align: center;
 }
 
+/* Botões */
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Área de Perguntas */
 #question-area {
   margin-top: 20px;
+}
+
+#question-area button {
+  margin: 5px;
 }

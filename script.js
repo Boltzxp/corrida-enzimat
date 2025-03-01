@@ -81,13 +81,14 @@ function checkAnswer(selectedAnswer, correctAnswer) {
 // Evento de lançar o dado
 rollDiceButton.addEventListener('click', () => {
   // Array com os caminhos das imagens dos dados
-  const diceImages = [
-    "images/dice-1.png",
-    "images/dice-2.png",
-    "images/dice-3.png",
-    "images/dice-4.png",
-    "images/dice-5.png",
-    "images/dice-6.png"
+ // Array com os caminhos das imagens dos dados
+const diceImages = [
+  "images/images/dice-1.png",
+  "images/images/dice-2.png",
+  "images/images/dice-3.png",
+  "images/images/dice-4.png",
+  "images/images/dice-5.png",
+  "images/images/dice-6.png"
   ];
 
   // Inicia a animação de giro

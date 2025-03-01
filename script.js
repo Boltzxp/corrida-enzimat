@@ -98,7 +98,7 @@ rollDiceButton.addEventListener('click', () => {
     diceElement.textContent = randomEmoji; // Atualiza o emoji do dado
   }, 200); // Troca o emoji a cada 200ms (ajustado para ser mais lento)
 
-  // Após 1 segundo, exibe o resultado do dado
+  // Após 1.5 segundos, exibe o resultado do dado
   setTimeout(() => {
     clearInterval(rotationInterval); // Para a animação
     const diceRoll = Math.floor(Math.random() * 6) + 1; // Gera um número entre 1 e 6
@@ -120,5 +120,7 @@ rollDiceButton.addEventListener('click', () => {
 });
 
 // Inicializa o jogo
+createBoard();
+updatePlayerPosition();
 createBoard();
 updatePlayerPosition();

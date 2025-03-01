@@ -83,7 +83,8 @@ rollDiceButton.addEventListener('click', () => {
   // Array com os caminhos das imagens dos dados
  // Array com os caminhos das imagens dos dados
 // Array com os caminhos das imagens dos dados
-const diceImages = [
+
+];const diceImages = [
   "images/images/dice-1.png",
   "images/images/dice-2.png",
   "images/images/dice-3.png",
